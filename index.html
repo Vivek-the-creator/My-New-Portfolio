@@ -3,296 +3,770 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vivek K K | Portfolio</title>
-    <meta
-        name="description"
-        content="Portfolio of Vivek K K, a CSE (AIML) student building full-stack, AI, and app development projects."
-    >
+    <title>Vivek K K | AI & Full-Stack Developer</title>
+    <meta name="description" content="Portfolio of Vivek K K, a CSE (AIML) student building full-stack, AI, and app development projects. Hackathon winner at NIT Trichy and IIT Madras.">
+    <meta property="og:title" content="Vivek K K | AI & Full-Stack Developer">
+    <meta property="og:description" content="Building practical AI and web products with speed, clarity, and purpose.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="page-shell">
-        <header class="hero">
-            <nav class="topbar">
-                <a class="brand" href="#home">VIVEK K K</a>
-                <div class="nav-links">
+
+    <!-- Animated background canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Noise texture overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a class="nav-brand" href="#home">
+                <span class="brand-dot"></span>
+                VKK
+            </a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#achievements" class="nav-link">Achievements</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <a href="mailto:vivek.kk2024aiml@sece.ac.in" class="nav-cta" id="nav-cta">
+                <span>Let's Talk</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-inner">
+            <div class="hero-left">
+                <div class="hero-badge reveal-up">
+                    <span class="badge-pulse"></span>
+                    <span>Open to Opportunities</span>
+                </div>
+                <h1 class="hero-title reveal-up" style="--delay:0.1s">
+                    Building the future<br>
+                    <span class="gradient-text">with AI & Code.</span>
+                </h1>
+                <p class="hero-subtitle reveal-up" style="--delay:0.2s">
+                    I'm <strong>Vivek K K</strong> — a CSE (AIML) student at Sri Eshwar College of Engineering. I craft full-stack applications, AI-powered tools, and mobile experiences that solve real problems.
+                </p>
+                <div class="hero-tags reveal-up" style="--delay:0.3s">
+                    <span class="tag">🧠 AIML</span>
+                    <span class="tag">⚡ Full-Stack</span>
+                    <span class="tag">🏆 Hackathon Winner</span>
+                    <span class="tag">📱 Flutter</span>
+                </div>
+                <div class="hero-actions reveal-up" style="--delay:0.4s">
+                    <a href="#projects" class="btn btn-primary" id="view-projects-btn">
+                        View Projects
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="mailto:vivek.kk2024aiml@sece.ac.in" class="btn btn-ghost" id="email-btn">Email Me</a>
+                </div>
+                <div class="hero-socials reveal-up" style="--delay:0.5s">
+                    <a href="https://github.com/Vivek-the-creator" target="_blank" rel="noreferrer" class="social-link" id="github-link" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/vivek-k-k" target="_blank" rel="noreferrer" class="social-link" id="linkedin-link" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="tel:+918667035123" class="social-link" id="phone-link" aria-label="Phone">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-right reveal-right">
+                <div class="stats-card">
+                    <div class="stats-card-header">
+                        <span class="stats-label">Quick Snapshot</span>
+                        <span class="stats-dot-row">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </span>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="8.07" data-decimal="2">0</span>
+                            <span class="stat-label">CGPA</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="4">0</span>
+                            <span class="stat-label">Key Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="3">0</span>
+                            <span class="stat-label">Internships</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="160" data-suffix="+">0</span>
+                            <span class="stat-label">LeetCode Solved</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="950" data-suffix="+">0</span>
+                            <span class="stat-label">SkillRack Problems</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="9" data-suffix="🏆">0</span>
+                            <span class="stat-label">Hackathon Awards</span>
+                        </div>
+                    </div>
+                    <div class="skills-bar-list">
+                        <div class="skill-bar-item">
+                            <span>Python / AI/ML</span>
+                            <div class="bar-track"><div class="bar-fill" style="--w:90%"></div></div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <span>MERN Stack</span>
+                            <div class="bar-track"><div class="bar-fill" style="--w:85%"></div></div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <span>Flutter / Dart</span>
+                            <div class="bar-track"><div class="bar-fill" style="--w:80%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-hint">
+            <span>Scroll to explore</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow reveal-up">About Me</span>
+                <h2 class="section-title reveal-up" style="--delay:0.1s">Turning ideas into<br><span class="gradient-text">intelligent software.</span></h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text reveal-up" style="--delay:0.2s">
+                    <p>My work spans <strong>MERN applications</strong>, browser-based accessibility tools, <strong>AI-powered healthcare solutions</strong>, and mobile wellness products. I combine engineering fundamentals with practical design to ship projects that feel useful and complete.</p>
+                    <p>When I'm not coding, I'm competing in hackathons — having won at prestigious institutions like <strong>NIT Trichy</strong> and <strong>IIT Madras</strong>, along with 9 total hackathon recognitions.</p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">🎓</div>
+                            <div>
+                                <strong>B.E CSE (AIML)</strong>
+                                <span>Sri Eshwar College of Engineering • 8.07 CGPA</span>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">📍</div>
+                            <div>
+                                <strong>Coimbatore, Tamil Nadu</strong>
+                                <span>Open to remote & hybrid roles</span>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">🚀</div>
+                            <div>
+                                <strong>3 Internships Completed</strong>
+                                <span>NIELIT • SYNAPSLOGIC • CELLSTRAT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-stack-card reveal-right" style="--delay:0.3s">
+                    <p class="card-eyebrow">Tech Stack</p>
+                    <div class="tech-categories">
+                        <div class="tech-category">
+                            <span class="tech-cat-label">Languages</span>
+                            <div class="tech-chips">
+                                <span class="tech-chip">Python</span>
+                                <span class="tech-chip">JavaScript</span>
+                                <span class="tech-chip">C++</span>
+                                <span class="tech-chip">Java</span>
+                                <span class="tech-chip">Dart</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <span class="tech-cat-label">Frameworks</span>
+                            <div class="tech-chips">
+                                <span class="tech-chip">React.js</span>
+                                <span class="tech-chip">Node.js</span>
+                                <span class="tech-chip">Express.js</span>
+                                <span class="tech-chip">Flutter</span>
+                                <span class="tech-chip">Django</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <span class="tech-cat-label">AI / Data Science</span>
+                            <div class="tech-chips">
+                                <span class="tech-chip">PyTorch</span>
+                                <span class="tech-chip">Pandas</span>
+                                <span class="tech-chip">NumPy</span>
+                                <span class="tech-chip">RAG</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <span class="tech-cat-label">Databases & Tools</span>
+                            <div class="tech-chips">
+                                <span class="tech-chip">MongoDB</span>
+                                <span class="tech-chip">MySQL</span>
+                                <span class="tech-chip">Git</span>
+                                <span class="tech-chip">Figma</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow reveal-up">Selected Work</span>
+                <h2 class="section-title reveal-up" style="--delay:0.1s">Projects that <span class="gradient-text">make impact.</span></h2>
+            </div>
+            <div class="projects-grid">
+
+                <article class="project-card card-featured reveal-up" style="--delay:0.1s" id="project-aurora">
+                    <div class="project-card-inner">
+                        <div class="project-meta">
+                            <span class="project-year">2026</span>
+                            <span class="project-tag tag-orange">Full-Stack • MERN</span>
+                        </div>
+                        <h3 class="project-title">Aurora Voices</h3>
+                        <p class="project-desc">Full-stack MERN social platform for sharing poems, thoughts, and real-time interactions. Deployed on Vercel & Render with MongoDB Atlas.</p>
+                        <ul class="project-features">
+                            <li>Real-time interaction features with WebSockets</li>
+                            <li>Deployed front-end on Vercel, back-end on Render</li>
+                            <li>MongoDB Atlas for scalable cloud data storage</li>
+                        </ul>
+                        <div class="project-footer">
+                            <div class="project-tech-pills">
+                                <span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-glow glow-orange"></div>
+                </article>
+
+                <article class="project-card reveal-up" style="--delay:0.2s" id="project-gazevoice">
+                    <div class="project-card-inner">
+                        <div class="project-meta">
+                            <span class="project-year">2026</span>
+                            <span class="project-tag tag-blue">Accessibility • AI</span>
+                        </div>
+                        <h3 class="project-title">GazeVoice</h3>
+                        <p class="project-desc">Browser-based AAC system helping paralyzed patients communicate using eye gaze tracking and text-to-speech synthesis.</p>
+                        <ul class="project-features">
+                            <li>WebGazer.js for real-time gaze tracking</li>
+                            <li>Hands-free text-to-speech communication</li>
+                        </ul>
+                        <div class="project-footer">
+                            <div class="project-tech-pills">
+                                <span>WebGazer.js</span><span>TTS API</span><span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-glow glow-blue"></div>
+                </article>
+
+                <article class="project-card reveal-up" style="--delay:0.3s" id="project-cardiacare">
+                    <div class="project-card-inner">
+                        <div class="project-meta">
+                            <span class="project-year">2025</span>
+                            <span class="project-tag tag-green">Healthcare • AI</span>
+                        </div>
+                        <h3 class="project-title">CardiaCare</h3>
+                        <p class="project-desc">AI-powered heart health suite featuring ECG analysis and AI-based report summarization for accessible, insight-driven health reporting.</p>
+                        <ul class="project-features">
+                            <li>ECG signal analysis and classification</li>
+                            <li>AI-generated health report summarization</li>
+                        </ul>
+                        <div class="project-footer">
+                            <div class="project-tech-pills">
+                                <span>Python</span><span>AI/ML</span><span>HTML/CSS/JS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-glow glow-green"></div>
+                </article>
+
+                <article class="project-card reveal-up" style="--delay:0.4s" id="project-verve">
+                    <div class="project-card-inner">
+                        <div class="project-meta">
+                            <span class="project-year">2025</span>
+                            <span class="project-tag tag-purple">Mobile • Flutter</span>
+                        </div>
+                        <h3 class="project-title">Verve</h3>
+                        <p class="project-desc">Flutter-based AI nutrition and wellness application for chronic disease management with personalized meal and exercise planning.</p>
+                        <ul class="project-features">
+                            <li>Personalized meal & exercise plan generation</li>
+                            <li>Lifestyle guidance based on health conditions</li>
+                        </ul>
+                        <div class="project-footer">
+                            <div class="project-tech-pills">
+                                <span>Flutter</span><span>Dart</span><span>AI APIs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-glow glow-purple"></div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow reveal-up">Experience</span>
+                <h2 class="section-title reveal-up" style="--delay:0.1s">Where I've <span class="gradient-text">built & learned.</span></h2>
+            </div>
+            <div class="experience-timeline">
+
+                <div class="timeline-entry reveal-up" style="--delay:0.1s">
+                    <div class="timeline-connector">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-company">NIELIT, Calicut</h3>
+                                <p class="timeline-role">Data Analytics, AI & Web Development Intern</p>
+                            </div>
+                            <span class="timeline-date">Dec 2025</span>
+                        </div>
+                        <p class="timeline-desc">Worked on data analytics pipelines and AI model integration. Applied web development skills to build interactive dashboards and reporting tools.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-entry reveal-up" style="--delay:0.2s">
+                    <div class="timeline-connector">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-company">SYNAPSLOGIC</h3>
+                                <p class="timeline-role">Full Stack Development Intern</p>
+                            </div>
+                            <span class="timeline-date">Aug – Sep 2025</span>
+                        </div>
+                        <p class="timeline-desc">Developed full-stack web applications using MERN stack. Contributed to both frontend UI development and backend API design.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-entry reveal-up" style="--delay:0.3s">
+                    <div class="timeline-connector">
+                        <div class="timeline-node"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <h3 class="timeline-company">CELLSTRAT</h3>
+                                <p class="timeline-role">Artificial Intelligence Intern</p>
+                            </div>
+                            <span class="timeline-date">Jun – Jul 2025</span>
+                        </div>
+                        <p class="timeline-desc">Explored and implemented AI/ML models and solutions. Gained hands-on experience with deep learning frameworks and model deployment.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow reveal-up">Education</span>
+                <h2 class="section-title reveal-up" style="--delay:0.1s">Academic <span class="gradient-text">foundation.</span></h2>
+            </div>
+            <div class="edu-grid">
+                <div class="edu-card edu-featured reveal-up" style="--delay:0.1s">
+                    <div class="edu-badge">Current</div>
+                    <div class="edu-icon">🎓</div>
+                    <h3>B.E CSE (AIML)</h3>
+                    <p class="edu-institution">Sri Eshwar College of Engineering</p>
+                    <div class="edu-score">
+                        <span class="score-value">8.07</span>
+                        <span class="score-label">CGPA</span>
+                    </div>
+                    <span class="edu-year">2024 – 2028</span>
+                </div>
+                <div class="edu-card reveal-up" style="--delay:0.2s">
+                    <div class="edu-icon">📚</div>
+                    <h3>HSC</h3>
+                    <p class="edu-institution">Sri Vidya Mandir Matric. Hr. Sec. School</p>
+                    <div class="edu-score">
+                        <span class="score-value">91%</span>
+                        <span class="score-label">Score</span>
+                    </div>
+                    <span class="edu-year">2023 – 2024</span>
+                </div>
+                <div class="edu-card reveal-up" style="--delay:0.3s">
+                    <div class="edu-icon">📖</div>
+                    <h3>SSLC</h3>
+                    <p class="edu-institution">Bharath Hi-Tech Matric. Hr. Sec. School</p>
+                    <div class="edu-score">
+                        <span class="score-value">96.2%</span>
+                        <span class="score-label">Score</span>
+                    </div>
+                    <span class="edu-year">2021 – 2022</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="section" id="achievements">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow reveal-up">Achievements</span>
+                <h2 class="section-title reveal-up" style="--delay:0.1s">Competing & <span class="gradient-text">winning.</span></h2>
+            </div>
+            <div class="achievements-grid">
+
+                <article class="achievement-card winner reveal-up" style="--delay:0.1s">
+                    <div class="achievement-badge">🥇 Winner</div>
+                    <h3>Techgyan Gen AI Hackathon</h3>
+                    <p>Generative AI Challenge at NIT Trichy</p>
+                    <span class="achievement-year">2025</span>
+                </article>
+
+                <article class="achievement-card winner reveal-up" style="--delay:0.15s">
+                    <div class="achievement-badge">🥇 Winner</div>
+                    <h3>Android App Dev Hackathon</h3>
+                    <p>App Development at IIT Madras</p>
+                    <span class="achievement-year">2025</span>
+                </article>
+
+                <article class="achievement-card winner reveal-up" style="--delay:0.2s">
+                    <div class="achievement-badge">🥇 Winner</div>
+                    <h3>Appathon'25</h3>
+                    <p>12-hr App Dev Hackathon, Sona College of Technology</p>
+                    <span class="achievement-year">2025</span>
+                </article>
+
+                <article class="achievement-card winner reveal-up" style="--delay:0.25s">
+                    <div class="achievement-badge">🥇 Winner</div>
+                    <h3>Kalam '25 Paper Presentation</h3>
+                    <p>Research Paper Presentation, Karpagam College of Engineering</p>
+                    <span class="achievement-year">2025</span>
+                </article>
+
+                <article class="achievement-card winner reveal-up" style="--delay:0.3s">
+                    <div class="achievement-badge">🥇 Winner</div>
+                    <h3>Mescia 2k24 Paper Presentation</h3>
+                    <p>Research Paper, Kongu Engineering College, Erode</p>
+                    <span class="achievement-year">2025</span>
+                </article>
+
+                <article class="achievement-card finalist reveal-up" style="--delay:0.35s">
+                    <div class="achievement-badge">🥈 Finalist</div>
+                    <h3>Agentica 2.0</h3>
+                    <p>60-hr Hackathon at IIIT, SriCity</p>
+                    <span class="achievement-year">2026</span>
+                </article>
+
+                <article class="achievement-card finalist reveal-up" style="--delay:0.4s">
+                    <div class="achievement-badge">🥈 Finalist</div>
+                    <h3>AI Ignite 2026</h3>
+                    <p>Agentic AI Hackathon, SMVEC, Puducherry</p>
+                    <span class="achievement-year">2026</span>
+                </article>
+
+                <article class="achievement-card finalist reveal-up" style="--delay:0.45s">
+                    <div class="achievement-badge">🥈 Finalist</div>
+                    <h3>Aventus 3.0</h3>
+                    <p>24-hr Hackathon, Dayananda Sagar College, Bangalore</p>
+                    <span class="achievement-year">2025</span>
+                </article>
+
+                <article class="achievement-card finalist reveal-up" style="--delay:0.5s">
+                    <div class="achievement-badge">🥈 Finalist</div>
+                    <h3>Sustain-A-Thon 2025</h3>
+                    <p>Sharda University, Greater Noida</p>
+                    <span class="achievement-year">2025</span>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Coding Profiles -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="two-col-section">
+                <div class="two-col-left">
+                    <span class="section-eyebrow reveal-up">Certifications</span>
+                    <h2 class="section-title-sm reveal-up" style="--delay:0.1s">Certified &amp; <span class="gradient-text">verified.</span></h2>
+                    <div class="cert-list">
+                        <div class="cert-item reveal-up" style="--delay:0.1s">
+                            <div class="cert-icon">📜</div>
+                            <div>
+                                <strong>RAG with MongoDB</strong>
+                                <span>Credly • 2026</span>
+                            </div>
+                        </div>
+                        <div class="cert-item reveal-up" style="--delay:0.2s">
+                            <div class="cert-icon">📜</div>
+                            <div>
+                                <strong>30 Days DSA Bootcamp</strong>
+                                <span>Unstop • 2025</span>
+                            </div>
+                        </div>
+                        <div class="cert-item reveal-up" style="--delay:0.3s">
+                            <div class="cert-icon">📜</div>
+                            <div>
+                                <strong>Flutter – App Development</strong>
+                                <span>Udemy • 2025</span>
+                            </div>
+                        </div>
+                        <div class="cert-item reveal-up" style="--delay:0.4s">
+                            <div class="cert-icon">📜</div>
+                            <div>
+                                <strong>Figma UI/UX Design</strong>
+                                <span>Simplilearn • 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="two-col-right">
+                    <span class="section-eyebrow reveal-up">Coding Profiles</span>
+                    <h2 class="section-title-sm reveal-up" style="--delay:0.1s">Sharpening <span class="gradient-text">skills daily.</span></h2>
+                    <div class="coding-profile-list">
+                        <a href="https://leetcode.com/" target="_blank" rel="noreferrer" class="coding-profile-card reveal-up" style="--delay:0.1s" id="leetcode-card">
+                            <div class="profile-platform lc">LC</div>
+                            <div class="profile-info">
+                                <strong>LeetCode</strong>
+                                <span>160+ problems • Global Rank: 758,894</span>
+                            </div>
+                            <svg class="profile-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <a href="https://www.skillrack.com/" target="_blank" rel="noreferrer" class="coding-profile-card reveal-up" style="--delay:0.2s" id="skillrack-card">
+                            <div class="profile-platform sr">SR</div>
+                            <div class="profile-info">
+                                <strong>SkillRack</strong>
+                                <span>950+ problems • Rank: 26,303</span>
+                            </div>
+                            <svg class="profile-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <a href="https://www.hackerrank.com/" target="_blank" rel="noreferrer" class="coding-profile-card reveal-up" style="--delay:0.3s" id="hackerrank-card">
+                            <div class="profile-platform hr">HR</div>
+                            <div class="profile-info">
+                                <strong>HackerRank</strong>
+                                <span>2 badges • 4004 Hackos</span>
+                            </div>
+                            <svg class="profile-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="contact-inner reveal-up">
+                <span class="section-eyebrow">Let's Connect</span>
+                <h2 class="contact-title">Ready to build something <span class="gradient-text">amazing together?</span></h2>
+                <p class="contact-subtitle">I'm currently open to internships, collaborations, and full-time opportunities. Drop me a message and I'll get back to you quickly.</p>
+                <div class="contact-actions">
+                    <a href="mailto:vivek.kk2024aiml@sece.ac.in" class="btn btn-primary btn-large" id="contact-email-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.5"/></svg>
+                        vivek.kk2024aiml@sece.ac.in
+                    </a>
+                    <div class="contact-links-row">
+                        <a href="https://github.com/Vivek-the-creator" target="_blank" rel="noreferrer" class="contact-link-item" id="footer-github">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/vivek-k-k" target="_blank" rel="noreferrer" class="contact-link-item" id="footer-linkedin">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            LinkedIn
+                        </a>
+                        <a href="tel:+918667035123" class="contact-link-item" id="footer-phone">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            +91 8667035123
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <span class="footer-brand">VKK</span>
+                <p class="footer-copy">© 2026 Vivek K K. Designed & coded with ❤️</p>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
                     <a href="#projects">Projects</a>
-                    <a href="#achievements">Achievements</a>
                     <a href="#contact">Contact</a>
                 </div>
-            </nav>
+            </div>
+        </div>
+    </footer>
 
-            <section class="hero-panel" id="home">
-                <div class="hero-copy">
-                    <p class="eyebrow">CSE (AIML) Student | Full-Stack Builder | Hackathon Winner</p>
-                    <h1>Building practical AI and web products with speed, clarity, and purpose.</h1>
-                    <p class="hero-text">
-                        I am Vivek K K, a Computer Science student focused on AI, full-stack development,
-                        and product-driven problem solving. I enjoy turning ambitious ideas into polished
-                        applications that people can actually use.
-                    </p>
-                    <div class="cta-row">
-                        <a class="button primary" href="mailto:vivek.kk2024aiml@sece.ac.in">Email Me</a>
-                        <a class="button secondary" href="#projects">View Projects</a>
-                    </div>
-                </div>
+    <script>
+    // ── Canvas ambient background ──────────────────────────────────────────
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
 
-                <aside class="hero-card">
-                    <p class="card-label">Quick Snapshot</p>
-                    <ul class="stats-list">
-                        <li><strong>8.07</strong><span>Current CGPA</span></li>
-                        <li><strong>4</strong><span>Highlighted Projects</span></li>
-                        <li><strong>3</strong><span>Internships Completed</span></li>
-                        <li><strong>160+</strong><span>LeetCode Problems Solved</span></li>
-                    </ul>
-                </aside>
-            </section>
-        </header>
+    function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+    }
 
-        <main>
-            <section class="section section-grid">
-                <article class="panel">
-                    <p class="section-tag">About</p>
-                    <h2>Focused on AI, full-stack systems, and meaningful user experiences.</h2>
-                    <p>
-                        My work spans MERN applications, browser-based accessibility tools, AI-powered
-                        healthcare solutions, and mobile wellness products. I like combining engineering
-                        fundamentals with practical design to ship projects that feel useful and complete.
-                    </p>
-                </article>
+    class Particle {
+        constructor() { this.reset(); }
+        reset() {
+            this.x = Math.random() * W;
+            this.y = Math.random() * H;
+            this.r = Math.random() * 1.8 + 0.4;
+            this.vx = (Math.random() - 0.5) * 0.3;
+            this.vy = (Math.random() - 0.5) * 0.3;
+            this.alpha = Math.random() * 0.5 + 0.1;
+            this.color = Math.random() < 0.33 ? '147,51,234' : Math.random() < 0.5 ? '59,130,246' : '16,185,129';
+        }
+        update() {
+            this.x += this.vx; this.y += this.vy;
+            if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${this.color},${this.alpha})`;
+            ctx.fill();
+        }
+    }
 
-                <article class="panel contact-panel" id="contact">
-                    <p class="section-tag">Contact</p>
-                    <div class="contact-list">
-                        <a href="tel:+918667035123">+91 8667035123</a>
-                        <a href="mailto:vivek.kk2024aiml@sece.ac.in">vivek.kk2024aiml@sece.ac.in</a>
-                        <a href="https://github.com/Vivek-the-creator" target="_blank" rel="noreferrer">GitHub</a>
-                        <a href="https://www.linkedin.com/in/vivek-k-k" target="_blank" rel="noreferrer">LinkedIn</a>
-                    </div>
-                </article>
-            </section>
+    function initParticles() {
+        particles = Array.from({length: 90}, () => new Particle());
+    }
 
-            <section class="section" id="education">
-                <div class="section-heading">
-                    <p class="section-tag">Education</p>
-                    <h2>Academic foundation with strong performance across school and engineering.</h2>
-                </div>
-                <div class="timeline">
-                    <article class="timeline-item">
-                        <span class="timeline-year">2024-2028</span>
-                        <div>
-                            <h3>B.E CSE (AIML)</h3>
-                            <p>Sri Eshwar College of Engineering</p>
-                            <strong>CGPA: 8.07</strong>
-                        </div>
-                    </article>
-                    <article class="timeline-item">
-                        <span class="timeline-year">2023-2024</span>
-                        <div>
-                            <h3>HSC</h3>
-                            <p>Sri Vidya Mandir Matric. Hr. Sec. School</p>
-                            <strong>91%</strong>
-                        </div>
-                    </article>
-                    <article class="timeline-item">
-                        <span class="timeline-year">2021-2022</span>
-                        <div>
-                            <h3>SSLC</h3>
-                            <p>Bharath Hi-Tech Matric. Hr. Sec. School</p>
-                            <strong>96.2%</strong>
-                        </div>
-                    </article>
-                </div>
-            </section>
+    function drawConnections() {
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < 120) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(147,51,234,${0.06 * (1 - dist/120)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+    }
 
-            <section class="section" id="projects">
-                <div class="section-heading">
-                    <p class="section-tag">Projects</p>
-                    <h2>Selected work across social platforms, accessibility, healthcare, and wellness.</h2>
-                </div>
-                <div class="card-grid">
-                    <article class="project-card accent-orange">
-                        <div class="card-top">
-                            <span>2026</span>
-                            <h3>Aurora Voices</h3>
-                        </div>
-                        <p>
-                            Full-stack MERN social platform for sharing poems, thoughts, and real-time
-                            interactions.
-                        </p>
-                        <ul>
-                            <li>Deployed front-end on Vercel and back-end on Render.</li>
-                            <li>Used MongoDB Atlas for scalable cloud data storage.</li>
-                        </ul>
-                    </article>
-                    <article class="project-card accent-blue">
-                        <div class="card-top">
-                            <span>2026</span>
-                            <h3>GazeVoice</h3>
-                        </div>
-                        <p>
-                            Browser-based AAC system helping paralyzed patients communicate using eye gaze.
-                        </p>
-                        <ul>
-                            <li>Integrated WebGazer.js for gaze tracking.</li>
-                            <li>Added text-to-speech for hands-free communication.</li>
-                        </ul>
-                    </article>
-                    <article class="project-card accent-green">
-                        <div class="card-top">
-                            <span>2025</span>
-                            <h3>CardiaCare</h3>
-                        </div>
-                        <p>
-                            AI-powered heart health suite featuring ECG analysis and AI-based report
-                            summarization.
-                        </p>
-                        <ul>
-                            <li>Built with HTML, CSS, JavaScript, and Python.</li>
-                            <li>Focused on accessible, insight-driven health reporting.</li>
-                        </ul>
-                    </article>
-                    <article class="project-card accent-red">
-                        <div class="card-top">
-                            <span>2025</span>
-                            <h3>Verve</h3>
-                        </div>
-                        <p>
-                            Flutter-based AI nutrition and wellness application for chronic disease
-                            management.
-                        </p>
-                        <ul>
-                            <li>Generates personalized meal and exercise plans.</li>
-                            <li>Provides lifestyle guidance based on user health conditions.</li>
-                        </ul>
-                    </article>
-                </div>
-            </section>
+    function animate() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => { p.update(); p.draw(); });
+        drawConnections();
+        requestAnimationFrame(animate);
+    }
 
-            <section class="section split-layout">
-                <article class="panel">
-                    <p class="section-tag">Internships</p>
-                    <div class="list-block">
-                        <div class="list-item">
-                            <h3>NIELIT, Calicut</h3>
-                            <p>Internship in Data Analytics, AI, and Web Development</p>
-                            <span>1 Dec 2025 - 26 Dec 2025</span>
-                        </div>
-                        <div class="list-item">
-                            <h3>SYNAPSLOGIC</h3>
-                            <p>Full Stack Development Internship</p>
-                            <span>1 Aug 2025 - 30 Sep 2025</span>
-                        </div>
-                        <div class="list-item">
-                            <h3>CELLSTRAT</h3>
-                            <p>AI Internship</p>
-                            <span>22 Jun 2025 - 22 Jul 2025</span>
-                        </div>
-                    </div>
-                </article>
+    resize();
+    initParticles();
+    animate();
+    window.addEventListener('resize', () => { resize(); initParticles(); });
 
-                <article class="panel">
-                    <p class="section-tag">Certifications</p>
-                    <div class="chip-list">
-                        <span>RAG with MongoDB | Credly | 2026</span>
-                        <span>30 Days DSA Bootcamp | Unstop | 2025</span>
-                        <span>Flutter - App Development | Udemy | 2025</span>
-                        <span>Figma | Simplilearn | 2025</span>
-                    </div>
-                </article>
-            </section>
+    // ── Navbar scroll effect ────────────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
 
-            <section class="section" id="achievements">
-                <div class="section-heading">
-                    <p class="section-tag">Achievements</p>
-                    <h2>Hackathons and competitions where execution, teamwork, and ideas stood out.</h2>
-                </div>
-                <div class="achievement-grid">
-                    
-                    <article class="achievement-card">
-                        <h3>Winner</h3>
-                        <p>Techgyan GENERATIVE AI Hackathon, NIT Trichy</p>
-                        <span>2025</span>
-                    </article>
-                    <article class="achievement-card">
-                        <h3>Winner</h3>
-                        <p>Android App Development Hackathon, IIT Madras</p>
-                        <span>2025</span>
-                    </article>
-                    <article class="achievement-card">
-                        <h3>Winner</h3>
-                        <p>Appathon'25 (12-hr App Dev Hackathon), Sona College of Technology, Salem</p>
-                        <span>2025</span>
-                    </article>
-                    <article class="achievement-card">
-                        <h3>Finalist</h3>
-                        <p>AI Ignite 2026 (Agentic AI Hackathon), SMVEC, Puducherry</p>
-                        <span>2026</span>
-                    </article>
-                    <article class="achievement-card">
-                        <h3>Finalist</h3>
-                        <p>Aventus 3.0 (24-hr Hackathon), Dayananda Sagar College of Engineering, Bangalore</p>
-                        <span>2025</span>
-                    </article>
-                    <article class="achievement-card">
-                        <h3>Finalist</h3>
-                        <p>Sustain-A-Thon 2025, Sharda University, Greater Noida, UP</p>
-                        <span>2025</span>
-                    </article>
-                </div>
-            </section>
+    // ── Hamburger menu ─────────────────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+        });
+    });
 
-            <section class="section split-layout">
-                <article class="panel">
-                    <p class="section-tag">Coding Profiles</p>
-                    <div class="profile-list">
-                        <div class="profile-item">
-                            <h3>LeetCode</h3>
-                            <p>160+ problems solved</p>
-                            <span>Global Rank: 758,894</span>
-                        </div>
-                        <div class="profile-item">
-                            <h3>SkillRack</h3>
-                            <p>950+ problems solved</p>
-                            <span>Rank: 26,303</span>
-                        </div>
-                        <div class="profile-item">
-                            <h3>HackerRank</h3>
-                            <p>2 badges</p>
-                            <span>4004 Hackos</span>
-                        </div>
-                    </div>
-                </article>
+    // ── Scroll reveal ───────────────────────────────────────────────────────
+    const revEls = document.querySelectorAll('.reveal-up, .reveal-right');
+    const revObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                revObs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revEls.forEach(el => revObs.observe(el));
 
-                <article class="panel">
-                    <p class="section-tag">Skills</p>
-                    <div class="skills-group">
-                        <div>
-                            <h3>Programming</h3>
-                            <p>C, C++, Python, JavaScript, Java</p>
-                        </div>
-                        <div>
-                            <h3>Full-Stack Development</h3>
-                            <p>HTML, CSS, MERN Stack, Flutter, Django, MySQL, MongoDB</p>
-                        </div>
-                        <div>
-                            <h3>Data Science</h3>
-                            <p>Pandas, NumPy, Matplotlib, PyTorch</p>
-                        </div>
-                        <div>
-                            <h3>Tools</h3>
-                            <p>Git, GitHub, CI/CD, VS Code, Canva, Figma</p>
-                        </div>
-                    </div>
-                </article>
-            </section>
-        </main>
-    </div>
+    // ── Counter animation ───────────────────────────────────────────────────
+    function animateCounter(el) {
+        const target = parseFloat(el.dataset.target);
+        const decimal = parseInt(el.dataset.decimal || 0);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1600;
+        const start = performance.now();
+        function step(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3);
+            const val = target * ease;
+            el.textContent = (decimal ? val.toFixed(decimal) : Math.floor(val)) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    const counterObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.querySelectorAll('[data-target]').forEach(animateCounter);
+                counterObs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.stats-card').forEach(el => counterObs.observe(el));
+
+    // ── Skill bar animation ─────────────────────────────────────────────────
+    const barObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.querySelectorAll('.bar-fill').forEach(bar => {
+                    bar.classList.add('animate');
+                });
+                barObs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.stats-card').forEach(el => barObs.observe(el));
+    </script>
 </body>
 </html>
